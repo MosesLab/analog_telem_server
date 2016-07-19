@@ -46,14 +46,9 @@ init_serial()
 #command = "*RST\n"
 command = "MEASure:VOLTage:DC? (@101)\n"   #Writes to SerialPort
 
-print command
 
 
-while 1:
-	ser.write(command)	
-	bytes = ser.readline()  #Reads from SerialPort
-	val_list = list(bytes)
-	print val_list 		#Prints output from SerialPort
+	 
 
 
 #Attempt to create 2d array to fill with data points from Agilent
