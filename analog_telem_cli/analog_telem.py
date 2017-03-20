@@ -23,7 +23,7 @@ ROE_PSU_VMON = 14
 SHUT_VMON = 15
 SHUT_IMON = 16
 
-name_strs = []
+name_strs = [0 for col in range(T_CCD_COLD_BLOCK, SHUT_IMON+1)]
 name_strs[T_CCD_COLD_BLOCK] = "T_CCD_COLD_BLOCK"
 name_strs[T_CF_plusY] = "T_CF_+Y"
 name_strs[T_CF_minusY] = "T_CF_-Y"
@@ -44,12 +44,15 @@ name_strs[SHUT_IMON] = "SHUT_IMON"
 
 while(True):
 
+    print("______________________________________________")
+
     # Perform measurement
-    m_str = adc.measure(adc, 0, 16)
+    m_str = agilent.measure(adc, 101+0, 101+16)
     m_lst = m_str.split(",")
 
     for i in range(0,16):
-        print("%.4f" % m_lst[i])
+
+        print(name_strs[i],m_lst[i])
 
 
 

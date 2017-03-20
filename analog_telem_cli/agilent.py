@@ -4,7 +4,7 @@ import serial
 
 
 #Function to Initialize the Serial Port
-def init_serial(min_chan, max_chan):
+def init_serial():
     ser = serial.Serial()
     ser.baudrate = 9600   #Determines baud rate (rate at which information is transferred in a communication channel). 9600 bits/second.
 
@@ -28,6 +28,6 @@ def measure(ser, min_chan, max_chan):
     command = bytes("MEASure:VOLTage:DC? (@" + str(min_chan) + ":" + str(max_chan) + ")\n", 'utf-8')
 
     ser.write(command)
-    bytes = ser.readline().decode('utf-8')[:-2]  #Reads from SerialPort
-    return bytes
+    return ser.readline().decode('utf-8')[:-2]  #Reads from SerialPort
+
 
