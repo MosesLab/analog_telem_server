@@ -175,21 +175,21 @@ class BATTVCC_IMON:
     def eq(self, V):
         return V
 
-class 28V_BATT_VCC_VMON:
+class BATT_28V_VCC_VMON:
     units = "V"
     chan = 123
     str = "28V_BATT_VCC_VMON"
     def eq(self, V):
         return V
     
-class 28V_VOUT_IN_VMON:
+class VOUT_28V_IN_VMON:
     units = "V"
     chan = 124
     str = "28V_VOUT_IN_VMON"
     def eq(self, V):
         return V
     
-class 28V_VOUT_IN_IMON:
+class VOUT_28V_IN_IMON:
     units = "A"
     chan = 125
     str = "28V_VOUT_IN_IMON"
