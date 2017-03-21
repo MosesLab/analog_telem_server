@@ -11,12 +11,9 @@ def steinhart(V, Rb):
 class T_CCD_COLD_BLOCK:
     units = "C"
     bias = 2.84e6
-    def __init__(self,  chan):
-        self.chan = chan
+    chan = 101
     def eq(self, V):
-        return steinhart(V, bias)
-
-
+        return steinhart(V, self.bias)
 
 class T_CF_plusY:
 class T_CF_minusY:
