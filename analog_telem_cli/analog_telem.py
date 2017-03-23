@@ -1,46 +1,38 @@
 
 import agilent
+from conversions import *
 
 # initialize the serial port
 adc = agilent.init_serial()
 
 
-T_CCD_COLD_BLOCK = 0
-T_CF_plusY = 1
-T_CF_minusY = 2
-T_CF_zeroY = 3
-T_BP_zeroY = 4
-T_FC_COLD_BLOCK = 5
-T_FC_CPU = 6
-T_FC_5V_REG = 7
-T_FC_FPGA = 8
-T_ROE = 9
-T_ROE_PSU = 10
-T_PWR_BOX_INTERIOR = 11
-T_PWR_12V_REG = 12
-ROE_PSU_IMON = 13
-ROE_PSU_VMON = 14
-SHUT_VMON = 15
-SHUT_IMON = 16
+t_ccd_cold_block = T_CCD_COLD_BLOCK
+t_cf_plusy = T_CF_plusY
+t_cf_minusy = T_CF_minusY
+t_cf_zeroy = T_CF_zeroY
+t_bp_zeroy = T_BP_zeroY
+t_fc_cold_block = T_FC_COLD_BLOCK
+t_fc_cpu = T_FC_CPU
+t_fc_5v_reg = T_FC_5V_REG
+t_fc_fpga = T_FC_FPGA
+t_roe = T_ROE
+t_roe_psu = T_ROE_PSU
+t_pwr_box_interior = T_PWR_BOX_INTERIOR
+t_pwr_12v_reg = T_PWR_12V_REG
+roe_psu_imon = ROE_PSU_IMON
+roe_psu_vmon = ROE_PSU_VMON
+shut_vmon = SHUT_VMON
+shut_imon = SHUT_IMON
+fc_imon = FC_IMON
+fc_vmon = FC_VMON
+tmu_imon = TMU_IMON
+tmu_vmon = TMU_VMON
+battvcc_imon = BATTVCC_IMON
+batt_28v_vcc_vmon = BATT_28V_VCC_VMON
+vout_28v_in_vmon = VOUT_28V_IN_VMON
+vout_28v_in_imon = VOUT_28V_IN_IMON
+t_liss_mount = T_LISS_MOUNT
 
-name_strs = [0 for col in range(T_CCD_COLD_BLOCK, SHUT_IMON+1)]
-name_strs[T_CCD_COLD_BLOCK] = "T_CCD_COLD_BLOCK"
-name_strs[T_CF_plusY] = "T_CF_+Y"
-name_strs[T_CF_minusY] = "T_CF_-Y"
-name_strs[T_CF_zeroY] = "T_CF_0Y"
-name_strs[T_BP_zeroY] = "T_BP_0Y"
-name_strs[T_FC_COLD_BLOCK] = "T_FC_COLD_BLOCK"
-name_strs[T_FC_CPU] = "T_FC_CPU"
-name_strs[T_FC_5V_REG] = "T_FC_5V_REG"
-name_strs[T_FC_FPGA] = "T_FC_FPGA"
-name_strs[T_ROE] = "T_ROE"
-name_strs[T_ROE_PSU] = "T_ROE_PSU"
-name_strs[T_PWR_BOX_INTERIOR] = "T_PWR_BOX_INTERIOR"
-name_strs[T_PWR_12V_REG] = "T_PWR_12V_REG"
-name_strs[ROE_PSU_IMON] = "ROE_PSU_IMON"
-name_strs[ROE_PSU_VMON] = "ROE_PSU_VMON"
-name_strs[SHUT_VMON] = "SHUT_VMON"
-name_strs[SHUT_IMON] = "SHUT_IMON"
 
 while(True):
 
