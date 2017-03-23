@@ -33,18 +33,32 @@ vout_28v_in_vmon = VOUT_28V_IN_VMON
 vout_28v_in_imon = VOUT_28V_IN_IMON
 t_liss_mount = T_LISS_MOUNT
 
+conversions = [t_ccd_cold_block, t_cf_plusy, t_cf_minusy, t_cf_zeroy, t_bp_zeroy, t_fc_cold_block, t_fc_cpu, t_fc_5v_reg, t_fc_fpga, t_roe, t_roe_psu, t_pwr_box_interior, t_pwr_12v_reg, roe_psu_imon, roe_psu_vmon, shut_vmon, shut_imon, fc_imon, fc_vmon, tmu_imon, tmu_vmon, battvcc_imon, batt_28v_vcc_vmon, vout_28v_in_vmon, vout_28v_in_imon, t_liss_mount]
+conversions.sort(key=lambda x: x.chan)
+chan_max = max(x.chan for x in conversions)
+chan_min = min(x.chan for x in conversions)
+chan_lst = [i for i in range(chan_min, chan_max+1)]
 
 while(True):
 
     print("______________________________________________")
 
     # Perform measurement
-    m_str = agilent.measure(adc, 101+0, 101+16)
+    m_str = agilent.measure(adc, chan_min, chan_max+1)
     m_lst = m_str.split(",")
 
-    for i in range(0,16):
 
-        print(name_strs[i],m_lst[i])
+
+
+    for i in chan_lst:
+
+        conv_ind = [x for x in conversions if x.chan == i]
+
+        if(len(conv_ind) == 1):
+            this_conv = conversions[conv_ind]
+            print(this_conv.str, this_conv.eq(float(m_lst[i - chan_min])))
+        else :
+            print("incorrect channel specification")
 
 
 
