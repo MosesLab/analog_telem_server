@@ -5,7 +5,8 @@ Program that reads data from Agilent 34970a and sends it via IP multicast to cli
 ## Installation
 Uses Python 3.5
 ```
-sudo apt install pip3
+sudo apt install python3-pip
 sudo pip3 install pyusb
+sudo pip3 install pyserial
 sudo pip3 install tabulate
 ```
