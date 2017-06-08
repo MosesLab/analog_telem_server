@@ -5,8 +5,13 @@ def steinhart(V, Rb):
     C2 = 2.362e-4
     C3 = 9.285e-8
     Vin = 12.
-    R = (-Rb * V + Rb * Vin) / V
-    return 1 / (C1 + C2 * math.log(R) + C3 * math.pow(math.log(R), 3))
+
+    if V <= 0:
+        V = 1e-6
+
+    #R = (-Rb * V + Rb * Vin) / V
+    R = -Rb * V / (V-Vin)
+    return 1 / (C1 + C2 * math.log(R) + C3 * math.pow(math.log(R), 3)) - 273.15
 
 class T_CCD_COLD_BLOCK:
     units = "C"

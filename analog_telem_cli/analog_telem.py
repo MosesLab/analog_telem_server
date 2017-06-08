@@ -39,7 +39,7 @@ conversions.sort(key=lambda x: x.chan)
 #chan_max = max(x.chan for x in conversions)
 #chan_min = min(x.chan for x in conversions)
 chan_min = 101
-chan_max = 102
+chan_max = 126
 print(chan_min)
 chan_lst = [i for i in range(chan_min, chan_max+1)]
 
