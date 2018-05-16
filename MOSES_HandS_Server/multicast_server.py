@@ -27,6 +27,7 @@ def init_serial():
 		print 'Open: ' + ser.portstr
 #End of Initialize Function
 
+#SCPI commands to send to Agilent
 command = "MEASure:VOLTage:DC? (@101)\n" #Writes to SerialPort
 
 def read_agilent():
@@ -34,6 +35,7 @@ def read_agilent():
 	bytes = ser.readline()  #Reads from SerialPort
 	return bytes
 
+#Initialize serial port
 init_serial()
 
 # Create the datagram socket
