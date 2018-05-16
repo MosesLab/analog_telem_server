@@ -8,7 +8,7 @@ def init_serial():
     ser = serial.Serial()
     ser.baudrate = 9600   #Determines baud rate (rate at which information is transferred in a communication channel). 9600 bits/second.
 
-    ser.port = '/dev/ttyUSB0'
+    ser.port = '/dev/ttyUSB1'
 
     #Sets the TimeOut in seconds, so that SerialPort doesn't miscommunicate
     ser.timeout = None
@@ -29,5 +29,9 @@ def measure(ser, min_chan, max_chan):
 
     ser.write(command)
     return ser.readline().decode('utf-8')[:-2]  #Reads from SerialPort
+
+def cleanup_serial(ser):
+
+    ser.close()
 
 

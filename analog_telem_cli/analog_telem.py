@@ -45,29 +45,34 @@ chan_lst = [i for i in range(chan_min, chan_max+1)]
 
 vheader = ["Channel Name", "Value"]
 
-while(True):
+try:
+    while(True):
 
-    print("______________________________________________")
-
-
-    # Perform measurement
-    m_str = agilent.measure(adc, chan_min, chan_max+1)
-    m_lst = m_str.split(",")
+        print("______________________________________________")
 
 
-    vtable = []
+        # Perform measurement
+        m_str = agilent.measure(adc, chan_min, chan_max+1)
+        m_lst = m_str.split(",")
 
-    for i in chan_lst:
 
-        conv_ind = [j for j, x in enumerate(conversions) if x.chan == i]
+        vtable = []
 
-        if(len(conv_ind) == 1):
-            this_conv = conversions[conv_ind[0]]
-            #print(this_conv.str, this_conv.eq(float(m_lst[i - chan_min])))
-            vtable.append([this_conv.str, str('%.3f' % this_conv.eq(float(m_lst[i - chan_min]))) + " " + this_conv.units])
+        for i in chan_lst:
 
-        else :
-            print("incorrect channel specification")
+            conv_ind = [j for j, x in enumerate(conversions) if x.chan == i]
 
-    print(tabulate(vtable, headers=vheader))
+            if(len(conv_ind) == 1):
+                this_conv = conversions[conv_ind[0]]
+                #print(this_conv.str, this_conv.eq(float(m_lst[i - chan_min])))
+                vtable.append([this_conv.str, str('%.3f' % this_conv.eq(float(m_lst[i - chan_min]))) + " " + this_conv.units])
+
+            else :
+                print("incorrect channel specification")
+
+        print(tabulate(vtable, headers=vheader))
+
+except KeyboardInterrupt:
+
+    aglient.cleanup_serial(adc)
 
